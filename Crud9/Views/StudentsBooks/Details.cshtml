@@ -1,0 +1,63 @@
+﻿@model Crud9.Models.StudentViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Student Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BookList)
+        </dt>
+
+        <dd>
+            <dd>
+                @foreach (var items in Model.BookList)
+                {
+                    <input name="@items.BookID" type="hidden" value="@items.BookID" checked="@items.IsSelected" /><br />
+                    @items.BookName
+                }
+            </>
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <br />@Html.ActionLink("Edit", "Edit", new { id = Model.StudentID }) |
+</p>

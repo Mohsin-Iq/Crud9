@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Crud9.Models.StudentViewModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<table class="table">
+    <tr>
+        <th>
+       
+            @Html.DisplayNameFor(model => model.StudentID)
+        </th>
+        <th>
+    
+            @Html.DisplayNameFor(model => model.StudentName)
+        </th>
+        <th>
+        
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+    
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+        
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+     
+            @Html.DisplayNameFor(model => model.BookList)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>
+          
+                @Html.DisplayFor(modelItem => item.StudentID)
+            </td>
+            <td>
+            
+                @Html.DisplayFor(modelItem => item.StudentName)
+            </td>
+            <td>
+               
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+             
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+               
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @foreach (var items in item.BookList)
+                {
+                    <input name="@items.BookID" type="hidden" value="@items.BookID" checked="@items.IsSelected" /><br />
+                    @items.BookName
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.StudentID }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.StudentID }) |
+                @*  @Html.ActionLink("Delete", "Delete", new { id = item.StudentID })
+                *@
+            </td>
+        </tr>
+    }
+</table>
