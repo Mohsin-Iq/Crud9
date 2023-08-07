@@ -34,6 +34,7 @@ namespace Crud9.Models
                 cmt.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter st = new SqlDataAdapter(cmt);
                 DataSet dS = new DataSet();
+              //  dS.SelecteCommand = cmd; --its only for the CoreMVC(7.0).net
                 con.Open();
                 st.Fill(dS);
                 con.Close();
